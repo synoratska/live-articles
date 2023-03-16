@@ -3,7 +3,7 @@
     <nav class="container">
       <div class="branding">
         <router-link class="header" :to="{ name: 'Home' }"
-          >Live Article</router-link
+          >Ukrainian Portal</router-link
         >
       </div>
       <div class="nav-links">

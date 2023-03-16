@@ -4,7 +4,7 @@
       <div class="left">
         <div class="col-1">
           <router-link class="header" :to="{ name: 'Home' }"
-            >Live Article</router-link
+            >Ukrainian Portal</router-link
           >
           <ul>
             <li>

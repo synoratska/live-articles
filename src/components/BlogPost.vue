@@ -54,7 +54,7 @@ export default {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     flex: 4;
     order: 2;
     @media (min-width: 700px) {
@@ -67,7 +67,7 @@ export default {
       max-width: 600px;
       padding: 72px 24px;
       @media (min-width: 700px) {
-        padding: 0 24px;
+        padding: 0 48px;
       }
 
       h2 {
@@ -87,9 +87,9 @@ export default {
       }
 
       .content-preview {
-        font-size: 13px;
+        font-size: 17px;
         max-height: 24px;
-        width: 250px;
+        max-width: 250px;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
