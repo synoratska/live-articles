@@ -3,7 +3,7 @@
     <div class="container">
       <div class="left">
         <div class="col-1">
-          <router-link class="header" :to="{ name: 'StartingPage' }"
+          <router-link class="header" :to="{ name: 'Home' }"
             >Live Article</router-link
           >
           <ul>
@@ -23,19 +23,19 @@
         </div>
         <div class="col-2">
           <ul>
-            <router-link class="link" :to="{ name: 'StartingPage' }"
+            <router-link class="link" :to="{ name: 'Home' }"
               >Home</router-link
             >
-            <router-link class="link" :to="{ name: 'StartingPage' }"
+            <router-link class="link" :to="{ name: 'Home' }"
               >Articles</router-link
             >
-            <router-link v-if="user" class="link" :to="{ name: 'StartingPage' }"
+            <router-link v-if="user" class="link" :to="{ name: 'Home' }"
               >Create An Article</router-link
             >
             <router-link
               v-if="!user"
               class="link"
-              :to="{ name: 'StartingPage' }"
+              :to="{ name: 'Home' }"
               >Login/Register</router-link
             >
           </ul>
