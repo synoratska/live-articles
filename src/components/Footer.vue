@@ -24,11 +24,11 @@
         <div class="col-2">
           <ul>
             <router-link class="link" :to="{ name: 'Home' }">Home</router-link>
-            <router-link class="link" :to="{ name: 'Home' }"
-              >Articles</router-link
+            <router-link class="link" :to="{ name: 'Blogs' }"
+              >Places</router-link
             >
             <router-link v-if="user" class="link" :to="{ name: 'Home' }"
-              >Create An Article</router-link
+              >Create A Note</router-link
             >
             <router-link v-if="!user" class="link" :to="{ name: 'Home' }"
               >Login/Register</router-link

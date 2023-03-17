@@ -6,7 +6,7 @@
       <div class="container">
         <h3>View More Recent Blogs</h3>
         <div class="blog-cards">
-          <BlogCards
+          <BlogCard
             :post="post"
             v-for="(post, ind) in sampleBlogCards"
             :key="ind"
@@ -27,13 +27,13 @@
 
 <script>
 import BlogPost from '@/components/BlogPost'
-import BlogCards from '@/components/BlogCard'
+import BlogCard from '@/components/BlogCard'
 import Arrow from '@/assets/Icons/arrow-right-light.svg'
 export default {
   name: 'HomePage',
   components: {
     BlogPost,
-    BlogCards,
+    BlogCard,
     Arrow,
   },
   data() {
@@ -59,30 +59,14 @@ export default {
           blogCoverPhoto: '03',
         },
       ],
-      sampleBlogCards: [
-        {
-          blogTitle: 'Blog Card #1',
-          blogCoverPhoto: '001',
-          blogDate: 'March 15, 2023',
-        },
-        {
-          blogTitle: 'Blog Card #2',
-          blogCoverPhoto: '002',
-          blogDate: 'August 15, 2023',
-        },
-        {
-          blogTitle: 'Blog Card #3',
-          blogCoverPhoto: '003',
-          blogDate: 'September 15, 2023',
-        },
-        {
-          blogTitle: 'Blog Card #4',
-          blogCoverPhoto: '004',
-          blogDate: 'July 15, 2023',
-        },
-      ],
+     
     }
   },
+  computed: {
+    sampleBlogCards() {
+      return this.$store.state.sampleBlogCards
+    }
+  }
 }
 </script>
 

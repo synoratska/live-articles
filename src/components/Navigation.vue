@@ -8,9 +8,9 @@
       </div>
       <div class="nav-links">
         <ul>
-          <router-link class="link" to="#">Home</router-link>
-          <router-link class="link" to="#">Articles</router-link>
-          <router-link class="link" to="#">Create An Article</router-link>
+          <router-link class="link" :to="{name: 'Home'}">Home</router-link>
+          <router-link class="link" :to="{name: 'Blogs'}">Places</router-link>
+          <router-link class="link" to="#">Create A Note</router-link>
           <router-link class="link" to="#">Login/Register</router-link>
         </ul>
       </div>
@@ -18,9 +18,9 @@
     <menuIcon @click="toggleMobileNav" class="menu-icon" />
     <transition name="mobile-nav">
       <ul class="mobile-nav" v-if="mobileNav">
-        <router-link class="link" to="#">Home</router-link>
-        <router-link class="link" to="#">Articles</router-link>
-        <router-link class="link" to="#">Create An Article</router-link>
+        <router-link class="link" :to="{name: 'Home'}">Home</router-link>
+        <router-link class="link" :to="{name: 'Blogs'}">Places</router-link>
+        <router-link class="link" to="#">Create A Note</router-link>
         <router-link class="link" to="#">Login/Register</router-link>
       </ul>
     </transition>
