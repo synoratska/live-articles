@@ -41,15 +41,15 @@ export default {
   cursor: pointer;
   display: flex;
   flex-direction: column;
-  border-radius: 8px;
+  border-radius: 10px 0;
   background-color: #fff;
   min-height: 420px;
   transition: 0.5s ease all;
 
   &:hover {
     transform: rotateZ(-1deg) scale(1.01);
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
-      0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    box-shadow: 0 4px 6px -1px #0000001a,
+      0 2px 4px -1px #0000000f;
   }
 
   .icons {
@@ -94,7 +94,7 @@ export default {
 
  img {
   display: block;
-  border-radius: 8px 8px 0 0;
+  border-radius: 10px 0;
   width: 100%;
   max-height: 190px;
   object-fit: cover;

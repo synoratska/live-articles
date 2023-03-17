@@ -12,29 +12,29 @@
 import NavigationBar from '@/components/Navigation'
 import FooterVue from '@/components/Footer'
 export default {
-  name: "app",
+  name: 'app',
   components: {
     NavigationBar,
-    FooterVue
+    FooterVue,
   },
   data() {
-    return {};
+    return {}
   },
   created() {},
   mounted() {},
   methods: {},
   watch: {},
-};
+}
 </script>
 
 <style lang="scss">
-@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Quicksand", sans-serif;
+  font-family: 'Quicksand', sans-serif;
 }
 
 .app {
@@ -73,6 +73,58 @@ export default {
   }
 }
 
+button,
+.router-button {
+  transition: 500ms ease all;
+  cursor: pointer;
+  margin-top: 24px;
+  padding: 12px 24px;
+  background-color: #303030;
+  color: #fff;
+  border-radius: 10px 0;
+  border: none;
+  text-transform: uppercase;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:hover {
+    background-color: #303030b3;
+  }
+}
+
+.button-ghost {
+  color: #000;
+  padding: 0;
+  border-radius: 0;
+  margin-top: 50px;
+  font-size: 15px;
+  font-weight: 500;
+  background-color: transparent;
+
+  @media (min-width: 700px) {
+    margin-top: 0;
+    margin-left: auto;
+  }
+
+  i {
+    margin-left: 8px;
+  }
+}
+
+.button-light {
+  background-color: transparent;
+  border: 2px solid #fff;
+  color: #fff;
+}
+
+.button-inactive {
+  pointer-events: none !important;
+  cursor: none !important;
+  background-color: #80808080 !important;
+}
+
 .blog-card-wrap {
   position: relative;
   padding: 80px 16px;
@@ -86,16 +138,16 @@ export default {
     gap: 32px;
     grid-template-columns: 1fr;
 
-    @media(min-width: 500px) {
-       grid-template-columns: repeat(2, 1fr);
+    @media (min-width: 500px) {
+      grid-template-columns: repeat(2, 1fr);
     }
 
-      @media(min-width: 900px) {
-       grid-template-columns: repeat(3, 1fr);
+    @media (min-width: 900px) {
+      grid-template-columns: repeat(3, 1fr);
     }
 
-      @media(min-width: 1200px) {
-       grid-template-columns: repeat(4, 1fr);
+    @media (min-width: 1200px) {
+      grid-template-columns: repeat(4, 1fr);
     }
   }
 }

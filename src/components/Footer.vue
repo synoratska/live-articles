@@ -4,7 +4,7 @@
       <div class="left">
         <div class="col-1">
           <router-link class="header" :to="{ name: 'Home' }"
-            >Ukrainian Portal</router-link
+            >Ukrainian <span>Portal</span></router-link
           >
           <ul>
             <li>
@@ -23,19 +23,14 @@
         </div>
         <div class="col-2">
           <ul>
-            <router-link class="link" :to="{ name: 'Home' }"
-              >Home</router-link
-            >
+            <router-link class="link" :to="{ name: 'Home' }">Home</router-link>
             <router-link class="link" :to="{ name: 'Home' }"
               >Articles</router-link
             >
             <router-link v-if="user" class="link" :to="{ name: 'Home' }"
               >Create An Article</router-link
             >
-            <router-link
-              v-if="!user"
-              class="link"
-              :to="{ name: 'Home' }"
+            <router-link v-if="!user" class="link" :to="{ name: 'Home' }"
               >Login/Register</router-link
             >
           </ul>
@@ -98,7 +93,7 @@ footer {
       .header {
         text-align: center;
         font-size: 24px;
-        color: #fff;
+        color: #200a66;
         text-decoration: none;
         font-weight: 600;
         @media (min-width: 800px) {
@@ -177,6 +172,10 @@ footer {
     p {
       margin-top: auto;
     }
+  }
+
+  .header span {
+    color: #ccd313;
   }
 }
 </style>

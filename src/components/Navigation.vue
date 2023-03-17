@@ -3,7 +3,7 @@
     <nav class="container">
       <div class="branding">
         <router-link class="header" :to="{ name: 'Home' }"
-          >Ukrainian Portal</router-link
+          >Ukrainian<span>Portal</span> </router-link
         >
       </div>
       <div class="nav-links">
@@ -52,8 +52,8 @@ export default {
 header {
   background-color: #fff;
   padding: 0 25px;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
-    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 4px 6px -1px #0000001a,
+    0 2px 4px -1px #0000000f;
   z-index: 99;
 
   .link {
@@ -62,7 +62,7 @@ header {
     transition: 0.3s color ease;
 
     &:hover {
-      color: #0d5890;
+      color: #e8de21;
     }
   }
 
@@ -75,7 +75,7 @@ header {
       .header {
         font-weight: 600;
         font-size: 24px;
-        color: #000;
+        color: #32119d;
         text-decoration: none;
       }
     }
@@ -149,6 +149,10 @@ header {
 
   .mobile-nav-leave-to {
     transform: translateX(-250px)
+  }
+
+  span {
+    color:#e8de21;
   }
 }
 </style>
