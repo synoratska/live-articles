@@ -1,29 +1,49 @@
 <template>
   <div class="app-wrapper">
     <div class="app">
-      <NavigationBar />
+      <Navigation v-if="!navigationDisabled" />
       <router-view />
-      <FooterVue />
+      <Footer v-if="!navigationDisabled" />
     </div>
   </div>
 </template>
 
 <script>
-import NavigationBar from '@/components/Navigation'
-import FooterVue from '@/components/Footer'
+import Navigation from '@/components/Navigation'
+import Footer from '@/components/Footer'
 export default {
   name: 'app',
   components: {
-    NavigationBar,
-    FooterVue,
+    Navigation,
+    Footer,
   },
   data() {
-    return {}
+    return {
+      navigationDisabled: null,
+    }
   },
-  created() {},
+  created() {
+    this.checkRoute()
+  },
   mounted() {},
-  methods: {},
-  watch: {},
+  methods: {
+    checkRoute() {
+      if (
+        this.$route.name === 'Login' ||
+        this.$route.name === 'Signup' ||
+        this.$route.name === 'ForgotPassword'
+      ) {
+        this.navigationDisabled = true
+        return
+      }
+      this.navigationDisabled = false
+    },
+  },
+  watch: {
+    $route() {
+      this.checkRoute()
+    }
+  },
 }
 </script>
 
