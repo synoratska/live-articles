@@ -9,7 +9,7 @@
       <div class="nav-links">
         <ul>
           <router-link class="link" :to="{name: 'Home'}">Home</router-link>
-          <router-link class="link" :to="{name: 'Blogs'}">Places</router-link>
+          <router-link class="link" :to="{name: 'Places'}">Places</router-link>
           <router-link class="link" to="#">Create A Note</router-link>
           <router-link class="link" to="#">Login/Register</router-link>
         </ul>
@@ -19,7 +19,7 @@
     <transition name="mobile-nav">
       <ul class="mobile-nav" v-if="mobileNav">
         <router-link class="link" :to="{name: 'Home'}">Home</router-link>
-        <router-link class="link" :to="{name: 'Blogs'}">Places</router-link>
+        <router-link class="link" :to="{name: 'Places'}">Places</router-link>
         <router-link class="link" to="#">Create A Note</router-link>
         <router-link class="link" to="#">Login/Register</router-link>
       </ul>

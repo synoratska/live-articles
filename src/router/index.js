@@ -1,28 +1,38 @@
-import Vue from "vue";
-import VueRouter from "vue-router";
+import Vue from 'vue'
+import VueRouter from 'vue-router'
 import Home from '@/views/Home'
-import Blogs from '@/views/Blogs'
+import Places from '@/views/Places'
 
-
-Vue.use(VueRouter);
+Vue.use(VueRouter)
 
 const routes = [
   {
     path: '/',
     name: 'Home',
     component: Home,
+    meta: {
+      title: 'Home',
+    },
   },
   {
-    path: '/blogs',
-    name: 'Blogs',
-    component: Blogs,
+    path: '/places',
+    name: 'Places',
+    component: Places,
+    meta: {
+      title:' Places',
+    },
   },
 ]
 
 const router = new VueRouter({
-  mode: "history",
+  mode: 'history',
   base: process.env.BASE_URL,
   routes,
-});
+})
 
-export default router;
+router.beforeEach((to, from, next) => {
+  document.title = `${to.meta.title} | UkrainianPortal`
+  next()
+})
+
+export default router

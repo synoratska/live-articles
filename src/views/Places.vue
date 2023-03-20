@@ -17,7 +17,7 @@
 <script>
 import BlogCard from '@/components/BlogCard'
 export default {
-  name: 'BlogsPage',
+  name: 'PlacesPage',
   components: {
     BlogCard,
   },
