@@ -42,7 +42,7 @@ export default {
   watch: {
     $route() {
       this.checkRoute()
-    }
+    },
   },
 }
 </script>
@@ -143,6 +143,12 @@ button,
   pointer-events: none !important;
   cursor: none !important;
   background-color: #80808080 !important;
+}
+
+.error {
+  text-align: center;
+  font-size: 12px;
+  color: #841414;
 }
 
 .blog-card-wrap {
