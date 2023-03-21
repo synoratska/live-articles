@@ -27,10 +27,10 @@
             <router-link class="link" :to="{ name: 'Places' }"
               >Places</router-link
             >
-            <router-link v-if="user" class="link" :to="{ name: 'Home' }"
+            <router-link  class="link" :to="{ name: 'Home' }"
               >Create A Note</router-link
             >
-            <router-link v-if="!user" class="link" :to="{ name: 'Home' }"
+            <router-link class="link" :to="{name: 'Login'}"
               >Login/Register</router-link
             >
           </ul>

@@ -29,7 +29,7 @@ export default {
  }
  span {
   display: block;
-  width: 64px;
+  width: 60px;
   height: 60px;
   margin: 0 auto;
   border: 3px solid transparent;
