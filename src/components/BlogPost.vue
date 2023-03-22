@@ -1,5 +1,5 @@
 <template>
-  <div class="blog-wrapper no-user">
+  <div class="blog-wrapper">
     <div class="blog-content">
       <div>
         <h2 v-if="post.welcomeScreen">{{ post.title }}</h2>
@@ -42,8 +42,7 @@ export default {
 .blog-wrapper {
   display: flex;
   flex-direction: column;
-  box-shadow: 0 4px 6px -1px #0000001a,
-    0 2px 4px -1px #0000000f;
+  box-shadow: 0 4px 6px -1px #0000001a, 0 2px 4px -1px #0000000f;
   @media (min-width: 700px) {
     min-height: 650px;
     max-height: 650px;
@@ -118,8 +117,7 @@ export default {
   .blog-photo {
     order: 1;
     flex: 3;
-    box-shadow: 0 4px 6px -1px #0000001a,
-      0 2px 4px -1px #0000000f;
+    box-shadow: 0 4px 6px -1px #0000001a, 0 2px 4px -1px #0000000f;
 
     @media (min-width: 700px) {
       order: 2;
@@ -149,9 +147,9 @@ export default {
 }
 
 .no-user:first-child {
- .blog-content {
-  background-color: #303030;
-  color: #fff;
- }
+  .blog-content {
+    background-color: #303030;
+    color: #fff;
+  }
 }
 </style>
