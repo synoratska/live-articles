@@ -106,7 +106,7 @@ export default {
       font-size: 32px;
     }
     .profile-info {
-      border-radius: 8px;
+      border-radius: 18px 0 18px 0;
       box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
         0 2px 4px -1px rgba(0, 0, 0, 0.06);
       padding: 32px;
@@ -134,7 +134,7 @@ export default {
         color: #fff;
         font-size: 14px;
         padding: 8px 24px;
-        border-radius: 8px;
+        border-radius: 8px 0 8px 0;
         background-color: #303030;
         margin: 16px 0;
         text-align: center;
