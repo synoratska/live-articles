@@ -2,13 +2,13 @@ import firebase from 'firebase/app'
 import 'firebase/firestore'
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyA2aNRcyf6IGPDYZkckwdkQjGc3FD7ZrWc',
-  authDomain: 'vuelivearticle.firebaseapp.com',
-  projectId: 'vuelivearticle',
-  storageBucket: 'vuelivearticle.appspot.com',
-  messagingSenderId: '792275492946',
-  appId: '1:792275492946:web:8495ecddeeb25544c5bf8b',
-}
+  apiKey: "AIzaSyBfLdTfTXeLDZ8_w6aIJkx9q_a_iifR3qk",
+  authDomain: "ukrainian-portal.firebaseapp.com",
+  projectId: "ukrainian-portal",
+  storageBucket: "ukrainian-portal.appspot.com",
+  messagingSenderId: "190640678200",
+  appId: "1:190640678200:web:f8027eb11fe3075e2e0dcd"
+};
 
 const firebaseApp = firebase.initializeApp(firebaseConfig)
 const timestamp = firebase.firestore.FieldValue.serverTimestamp;
