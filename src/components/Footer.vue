@@ -27,10 +27,13 @@
             <router-link class="link" :to="{ name: 'Places' }"
               >Places</router-link
             >
-            <router-link  class="link" :to="{ name: 'Home' }"
+            <router-link class="link" :to="{ name: 'Home' }"
               >Create A Note</router-link
             >
-            <router-link v-if="!user" class="link" :to="{name: 'Login'}"
+            <router-link v-if="admin" class="link" :to="{ name: 'Home' }"
+              >Gallery</router-link
+            >
+            <router-link v-if="!user" class="link" :to="{ name: 'Login' }"
               >Login/Register</router-link
             >
           </ul>
@@ -57,9 +60,12 @@ export default {
     instagram,
     linkedIn,
   },
-    computed: {
+  computed: {
     user() {
       return this.$store.state.user
+    },
+    admin() {
+      return this.$store.state.profileAdmin
     },
   },
 }

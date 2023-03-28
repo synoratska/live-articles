@@ -13,11 +13,19 @@
             >Places</router-link
           >
           <router-link class="link" to="#">Create A Note</router-link>
+          <router-link v-if="admin" class="link" :to="{ name: 'Home' }"
+            >Gallery</router-link
+          >
           <router-link v-if="!user" class="link" :to="{ name: 'Login' }"
             >Login/Register</router-link
           >
         </ul>
-        <div v-if="user" class="profile" @click.prevent="toggleMobileMenu" ref="profile">
+        <div
+          v-if="user"
+          class="profile"
+          @click.prevent="toggleMobileMenu"
+          ref="profile"
+        >
           <span>{{ this.$store.state.profileInitials }}</span>
           <div class="profile-menu" v-if="profileMenu">
             <div class="info">
@@ -33,14 +41,14 @@
             </div>
             <div class="options">
               <div class="option">
-                <router-link class="option" :to="{name: 'Profile'}">
+                <router-link class="option" :to="{ name: 'Profile' }">
                   <userIcon class="icon" />
                   <p>Profile</p>
                 </router-link>
               </div>
 
-              <div class="option">
-                <router-link class="option" :to="{name: 'Admin'}">
+              <div v-if="admin" class="option">
+                <router-link class="option" :to="{ name: 'Admin' }">
                   <adminIcon class="icon" />
                   <p>Admin</p>
                 </router-link>
@@ -61,6 +69,9 @@
         <router-link class="link" :to="{ name: 'Home' }">Home</router-link>
         <router-link class="link" :to="{ name: 'Places' }">Places</router-link>
         <router-link class="link" to="#">Create A Note</router-link>
+        <router-link v-if="admin" class="link" :to="{ name: 'Home' }"
+          >Gallery</router-link
+        >
         <router-link v-if="!user" class="link" :to="{ name: 'Login' }"
           >Login/Register</router-link
         >
@@ -109,6 +120,9 @@ export default {
   computed: {
     user() {
       return this.$store.state.user
+    },
+    admin() {
+      return this.$store.state.profileAdmin
     },
   },
 }

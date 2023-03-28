@@ -27,9 +27,8 @@ export default {
   created() {
     firebase.auth().onAuthStateChanged((user) => {
       this.$store.commit('updateUser', user)
-      if(user) {
-        this.$store.dispatch('getCurrentUser')
-        console.log(this.$store.state.profileEmail)
+      if (user) {
+        this.$store.dispatch('getCurrentUser', user)
       }
     })
     this.checkRoute()
