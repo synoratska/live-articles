@@ -7,6 +7,7 @@ import Register from '@/views/Register'
 import ForgotPassword from '@/views/ForgotPassword'
 import Profile from '@/views/Profile'
 import Admin from '@/views/Admin'
+import CreateNote from '@/views/CreateNote'
 
 Vue.use(VueRouter)
 
@@ -52,7 +53,7 @@ const routes = [
     },
   },
 
-    {
+  {
     path: '/profile',
     name: 'Profile',
     component: Profile,
@@ -61,7 +62,16 @@ const routes = [
     },
   },
 
-    {
+  {
+    path: '/create-note',
+    name: 'CreateNote',
+    component: CreateNote,
+    meta: {
+      title: 'Create A Note',
+    },
+  },
+
+  {
     path: '/admin',
     name: 'Admin',
     component: Admin,

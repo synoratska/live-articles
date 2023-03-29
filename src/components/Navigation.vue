@@ -12,8 +12,8 @@
           <router-link class="link" :to="{ name: 'Places' }"
             >Places</router-link
           >
-          <router-link class="link" to="#">Create A Note</router-link>
-          <router-link v-if="admin" class="link" :to="{ name: 'Home' }"
+          <router-link class="link"  :to="{ name: 'CreateNote' }" >Create A Note</router-link>
+          <router-link v-if="admin" class="link" to="#"
             >Gallery</router-link
           >
           <router-link v-if="!user" class="link" :to="{ name: 'Login' }"
@@ -68,7 +68,7 @@
       <ul class="mobile-nav" v-if="mobileNav">
         <router-link class="link" :to="{ name: 'Home' }">Home</router-link>
         <router-link class="link" :to="{ name: 'Places' }">Places</router-link>
-        <router-link class="link" to="#">Create A Note</router-link>
+        <router-link class="link" :to="{name: 'CreateNote'}">Create A Note</router-link>
         <router-link v-if="admin" class="link" :to="{ name: 'Home' }"
           >Gallery</router-link
         >
