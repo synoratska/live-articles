@@ -62,6 +62,10 @@ export default new Vuex.Store({
       state.notePhotoFileURL = payload
     },
 
+    openPhotoPreview(state){
+      state.notePhotoPreview = !state.notePhotoPreview
+    },
+
     toggleEditPost(state, payload) {
       state.editPost = payload
     },

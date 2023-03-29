@@ -1,5 +1,6 @@
 <template>
   <div class="create-note">
+    <NoteCoverPreview v-show="this.$store.state.notePhotoPreview" />
     <div class="container">
       <div :class="{ invisible: !error }" class="err-message">
         <p><span>Error: </span> {{ this.errorMsg }}</p>
@@ -21,6 +22,7 @@
           />
           <button
             class="preview"
+            @click="openPreview"
             :class="{ 'button-inactive': !this.$store.state.notePhotoFileURL }"
           >
             Preview Photo
@@ -44,12 +46,17 @@
 </template>
 
 <script>
+import NoteCoverPreview from '@/components/NoteCoverPreview'
 import Quill from 'quill'
 window.Quill = Quill
 const ImageResize = require('quill-image-resize-module').default
 Quill.register('modules/imageResize', ImageResize)
+
 export default {
   name: 'CreateNote',
+  components: {
+    NoteCoverPreview
+  },
   data() {
     return {
       file: null,
@@ -68,6 +75,9 @@ export default {
       const fileName = this.file.name
       this.$store.commit('fileChangeName', fileName)
       this.$store.commit('createFileURL', URL.createObjectURL(this.file))
+    },
+    openPreview(){
+      this.$store.commit('openPhotoPreview')
     }
   },
   computed: {
