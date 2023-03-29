@@ -16,6 +16,7 @@
             type="file"
             ref="notePhoto"
             id="note-photo"
+            @change="fileChange"
             accept=".png, .jpg, .jpeg"
           />
           <button
@@ -51,6 +52,7 @@ export default {
   name: 'CreateNote',
   data() {
     return {
+      file: null,
       error: null,
       errorMsg: null,
       editorSettings: {
@@ -58,6 +60,38 @@ export default {
           imageResize: {},
         },
       },
+    }
+  },
+  methods: {
+    fileChange(){
+      this.file = this.$refs.notePhoto.files[0]
+      const fileName = this.file.name
+      this.$store.commit('fileChangeName', fileName)
+      this.$store.commit('createFileURL', URL.createObjectURL(this.file))
+    }
+  },
+  computed: {
+    profileId() {
+      return this.$store.state.profileId
+    },
+    noteCoverPhotoName() {
+      return this.$store.state.notePhotoName
+    },
+    noteTitle: {
+      get() {
+        return this.$store.state.noteTitle
+      },
+      set(payload){
+        this.$store.commit('updateNoteTitle', payload)
+      }
+    },
+    noteHTML: {
+      get() {
+        return this.$store.state.noteHTML
+      },
+      set(payload) {
+        this.$store.commit('newNotePost', payload)
+      }
     }
   },
 }
@@ -155,7 +189,7 @@ export default {
       }
 
       .preview {
-        margin-right: 16px;
+        margin-left: 16px;
         text-transform: initial;
       }
 

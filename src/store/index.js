@@ -46,6 +46,22 @@ export default new Vuex.Store({
     profileInitials: null,
   },
   mutations: {
+    newNotePost(state, payload) {
+      state.noteHTML = payload
+    },
+
+    updateNoteTitle(state, payload){
+      state.noteTitle = payload
+    },
+
+    fileChangeName(state, payload){
+      state.notePhotoName = payload
+    },
+
+    createFileURL(state, payload) {
+      state.notePhotoFileURL = payload
+    },
+
     toggleEditPost(state, payload) {
       state.editPost = payload
     },
@@ -66,20 +82,25 @@ export default new Vuex.Store({
       state.profileLastName = doc.data().lastName
       state.profileUsername = doc.data().username
     },
+
     setProfileInitials(state) {
       state.profileInitials =
         state.profileFirstName.match(/(\b\S)?/g).join('') +
         state.profileLastName.match(/(\b\S)?/g).join('')
     },
+
     changeFirstName(state, payload) {
       state.profileFirstName = payload
     },
+
     changeLastName(state, payload) {
       state.profileLastName = payload
     },
+
     changeUsername(state, payload) {
       state.profileUsername = payload
     },
+
   },
   actions: {
     async getCurrentUser({ commit }, user) {
