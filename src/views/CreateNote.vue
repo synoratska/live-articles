@@ -35,6 +35,7 @@
           :editorOptions="editorSettings"
           v-model="noteHTML"
           useCustomImageHandler
+          @image-added="imageHandler"
         />
       </div>
       <div class="note-actions">
@@ -47,6 +48,8 @@
 
 <script>
 import NoteCoverPreview from '@/components/NoteCoverPreview'
+import firebase from 'firebase/app'
+import 'firebase/storage'
 import Quill from 'quill'
 window.Quill = Quill
 const ImageResize = require('quill-image-resize-module').default
@@ -55,7 +58,7 @@ Quill.register('modules/imageResize', ImageResize)
 export default {
   name: 'CreateNote',
   components: {
-    NoteCoverPreview
+    NoteCoverPreview,
   },
   data() {
     return {
@@ -70,15 +73,53 @@ export default {
     }
   },
   methods: {
-    fileChange(){
+    fileChange() {
       this.file = this.$refs.notePhoto.files[0]
       const fileName = this.file.name
       this.$store.commit('fileChangeName', fileName)
       this.$store.commit('createFileURL', URL.createObjectURL(this.file))
     },
-    openPreview(){
+    openPreview() {
       this.$store.commit('openPhotoPreview')
-    }
+    },
+
+    // imageHandler(file, Editor, cursorLocation, resetUploader) {
+    //   const storageRef = firebase.storage().ref()
+    //   const docRef = storageRef.child(`documents/notePostPhotos/${file.name}`)
+    //   docRef.put(file).on(
+    //     'state_changed',
+    //     (snapshot) => {
+    //       console.log(snapshot)
+    //     },
+    //     (err) => {
+    //       console.log(err)
+    //     },
+    //     async () => {
+    //       const downloadURL = await docRef.getDownloadURL()
+    //       Editor.insertEmbed(cursorLocation, 'image', downloadURL)
+    //       resetUploader()
+    //     }
+    //   )
+    // },
+
+    imageHandler(file, Editor, cursorLocation, resetUploader) {
+      const storageRef = firebase.storage().ref()
+      const docRef = storageRef.child(`documents/notePostPhotos/${file.name}`)
+      docRef.put(file).on(
+        'state_changed',
+        (snapshot) => {
+          console.log(snapshot)
+        },
+        (err) => {
+          console.log(err)
+        },
+        async () => {
+          const downloadURL = await docRef.getDownloadURL()
+          Editor.insertEmbed(cursorLocation, 'image', downloadURL)
+          resetUploader()
+        }
+      )
+    },
   },
   computed: {
     profileId() {
@@ -91,9 +132,9 @@ export default {
       get() {
         return this.$store.state.noteTitle
       },
-      set(payload){
+      set(payload) {
         this.$store.commit('updateNoteTitle', payload)
-      }
+      },
     },
     noteHTML: {
       get() {
@@ -101,8 +142,8 @@ export default {
       },
       set(payload) {
         this.$store.commit('newNotePost', payload)
-      }
-    }
+      },
+    },
   },
 }
 </script>
@@ -244,3 +285,23 @@ export default {
   }
 }
 </style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
