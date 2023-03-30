@@ -8,6 +8,7 @@ import ForgotPassword from '@/views/ForgotPassword'
 import Profile from '@/views/Profile'
 import Admin from '@/views/Admin'
 import CreateNote from '@/views/CreateNote'
+import NotePreview from '@/views/NotePreview'
 
 Vue.use(VueRouter)
 
@@ -68,6 +69,15 @@ const routes = [
     component: CreateNote,
     meta: {
       title: 'Create A Note',
+    },
+  },
+
+  {
+    path: '/note-preview',
+    name: 'NotePreview',
+    component: NotePreview,
+    meta: {
+      title: 'Note Preview',
     },
   },
 

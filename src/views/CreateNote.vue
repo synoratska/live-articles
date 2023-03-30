@@ -40,7 +40,7 @@
       </div>
       <div class="note-actions">
         <button>Publish Note</button>
-        <router-link class="router-button" to="#">Note Preview</router-link>
+        <router-link class="router-button" :to="{name: 'NotePreview'}">Note Preview</router-link>
       </div>
     </div>
   </div>
@@ -82,25 +82,6 @@ export default {
     openPreview() {
       this.$store.commit('openPhotoPreview')
     },
-
-    // imageHandler(file, Editor, cursorLocation, resetUploader) {
-    //   const storageRef = firebase.storage().ref()
-    //   const docRef = storageRef.child(`documents/notePostPhotos/${file.name}`)
-    //   docRef.put(file).on(
-    //     'state_changed',
-    //     (snapshot) => {
-    //       console.log(snapshot)
-    //     },
-    //     (err) => {
-    //       console.log(err)
-    //     },
-    //     async () => {
-    //       const downloadURL = await docRef.getDownloadURL()
-    //       Editor.insertEmbed(cursorLocation, 'image', downloadURL)
-    //       resetUploader()
-    //     }
-    //   )
-    // },
 
     imageHandler(file, Editor, cursorLocation, resetUploader) {
       const storageRef = firebase.storage().ref()
