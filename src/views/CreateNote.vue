@@ -1,6 +1,7 @@
 <template>
   <div class="create-note">
     <NoteCoverPreview v-show="this.$store.state.notePhotoPreview" />
+    <Loading v-if="loading" />
     <div class="container">
       <div :class="{ invisible: !error }" class="err-message">
         <p><span>Error: </span> {{ this.errorMsg }}</p>
@@ -39,8 +40,10 @@
         />
       </div>
       <div class="note-actions">
-        <button>Publish Note</button>
-        <router-link class="router-button" :to="{name: 'NotePreview'}">Note Preview</router-link>
+        <button @click="uploadNote">Publish Note</button>
+        <router-link class="router-button" :to="{ name: 'NotePreview' }"
+          >Note Preview</router-link
+        >
       </div>
     </div>
   </div>
@@ -48,8 +51,10 @@
 
 <script>
 import NoteCoverPreview from '@/components/NoteCoverPreview'
+import Loading from '@/components/Loading'
 import firebase from 'firebase/app'
 import 'firebase/storage'
+import db from '@/firebase/firebaseInit'
 import Quill from 'quill'
 window.Quill = Quill
 const ImageResize = require('quill-image-resize-module').default
@@ -59,12 +64,14 @@ export default {
   name: 'CreateNote',
   components: {
     NoteCoverPreview,
+    Loading,
   },
   data() {
     return {
       file: null,
       error: null,
       errorMsg: null,
+      loading: null,
       editorSettings: {
         modules: {
           imageResize: {},
@@ -100,6 +107,51 @@ export default {
           resetUploader()
         }
       )
+    },
+    uploadNote() {
+      if (this.noteTitle.length !== 0 && this.noteHTML.length !== 0) {
+        if (this.file) {
+          this.loading = true
+          const storageRef = firebase.storage().ref()
+          const docRef = storageRef.child(
+            `documents/NoteCoverPhoto${this.$store.state.notePhotoName}`
+          )
+          docRef.put(this.file).on(
+            'state_changed',
+            (snapshot) => console.log(snapshot),
+            (err) => {
+              console.log(err)
+              this.loading = false
+            },
+            async () => {
+              const downloadURL = await docRef.getDownloadURL()
+              const timestamp = await Date.now()
+              const dataBase = await db.collection('notePosts').doc()
+
+              await dataBase.set({
+                noteID: dataBase.id,
+                noteHTML: this.noteHTML,
+                noteCoverPhoto: downloadURL,
+                noteCoverPhotoName: this.noteCoverPhotoName,
+                noteTitle: this.noteTitle,
+                profileId: this.profileId,
+                date: timestamp,
+              })
+              this.loading = false
+              this.$router.push({ name: 'ViewNote' })
+            }
+          )
+          return
+        }
+        this.error = true
+        this.errorMsg = 'Please ensure you uploaded a cover photo'
+        setTimeout(() => (this.error = false), 5000)
+        return
+      }
+      this.error = true
+      this.errorMsg = 'Please ensure Note Title & Note Post has been filled'
+      setTimeout(() => (this.error = false), 5000)
+      return
     },
   },
   computed: {
@@ -266,23 +318,3 @@ export default {
   }
 }
 </style>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
