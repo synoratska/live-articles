@@ -8,28 +8,30 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    sampleBlogCards: [
+    sampleNoteCards: [
       {
-        blogTitle: 'Blog Card #1',
-        blogCoverPhoto: '001',
-        blogDate: 'March 15, 2023',
+        noteTitle: 'Blog Card #1',
+        noteCoverPhoto: '001',
+        noteDate: 'March 15, 2023',
       },
       {
-        blogTitle: 'Blog Card #2',
-        blogCoverPhoto: '002',
-        blogDate: 'August 15, 2023',
+        noteTitle: 'Blog Card #2',
+        noteCoverPhoto: '002',
+        noteDate: 'August 15, 2023',
       },
       {
-        blogTitle: 'Blog Card #3',
-        blogCoverPhoto: '003',
-        blogDate: 'September 15, 2023',
+        noteTitle: 'Blog Card #3',
+        noteCoverPhoto: '003',
+        noteDate: 'September 15, 2023',
       },
       {
-        blogTitle: 'Blog Card #4',
-        blogCoverPhoto: '004',
-        blogDate: 'July 15, 2023',
+        noteTitle: 'Blog Card #4',
+        noteCoverPhoto: '004',
+        noteDate: 'July 15, 2023',
       },
     ],
+    notePosts: [],
+    noteLoaded: null,
     noteHTML: 'Write your blog title here...',
     noteTitle: '',
     notePhotoName: '',
@@ -45,16 +47,24 @@ export default new Vuex.Store({
     profileId: null,
     profileInitials: null,
   },
+  getters: {
+    notePostsFeed(state) {
+      return state.notePosts.slice(0, 1)
+    },
+    notePostsCards(state) {
+      return state.notePosts.slice(2, 6)
+    },
+  },
   mutations: {
     newNotePost(state, payload) {
       state.noteHTML = payload
     },
 
-    updateNoteTitle(state, payload){
+    updateNoteTitle(state, payload) {
       state.noteTitle = payload
     },
 
-    fileChangeName(state, payload){
+    fileChangeName(state, payload) {
       state.notePhotoName = payload
     },
 
@@ -62,7 +72,7 @@ export default new Vuex.Store({
       state.notePhotoFileURL = payload
     },
 
-    openPhotoPreview(state){
+    openPhotoPreview(state) {
       state.notePhotoPreview = !state.notePhotoPreview
     },
 
@@ -74,7 +84,7 @@ export default new Vuex.Store({
       state.user = payload
     },
 
-    setProfileAdmin(state,payload){
+    setProfileAdmin(state, payload) {
       state.profileAdmin = payload
       console.log(state.profileAdmin)
     },
@@ -104,7 +114,6 @@ export default new Vuex.Store({
     changeUsername(state, payload) {
       state.profileUsername = payload
     },
-
   },
   actions: {
     async getCurrentUser({ commit }, user) {
@@ -117,6 +126,24 @@ export default new Vuex.Store({
       const token = await user.getIdTokenResult()
       const admin = await token.claims.admin
       commit('setProfileAdmin', admin)
+    },
+    async getNote({ state }) {
+      const dataBase = await db.collection('notePosts').orderBy('date', 'desc')
+      const dbResults = await dataBase.get()
+      dbResults.forEach((doc) => {
+        if (!state.notePosts.some((post) => post.noteID === doc.id)) {
+          const data = {
+            noteID: doc.data().noteID,
+            noteHTML: doc.data().noteHTML,
+            noteCoverPhoto: doc.data().noteCoverPhoto,
+            noteTitle: doc.data().noteTitle,
+            noteDate: doc.data().date,
+          }
+          state.notePosts.push(data)
+          console.log(state.notePosts)
+        }
+      })
+      state.postLoaded = true
     },
     async updateUserSettings({ commit, state }) {
       const dataBase = await db.collection('users').doc(state.profileId)

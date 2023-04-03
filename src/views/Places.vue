@@ -1,13 +1,13 @@
 <template>
-  <div class="blog-card-wrap">
-    <div class="blog-cards container">
+  <div class="note-card-wrap">
+    <div class="note-cards container">
       <div class="toggle-edit">
         <span>Toggle Editing Post</span>
         <input type="checkbox" v-model="editPost" />
       </div>
-      <BlogCard
+      <NoteCard
         :post="post"
-        v-for="(post, ind) in sampleBlogCards"
+        v-for="(post, ind) in sampleNoteCards"
         :key="ind"
       />
     </div>
@@ -15,15 +15,15 @@
 </template>
 
 <script>
-import BlogCard from '@/components/BlogCard'
+import NoteCard from '@/components/NoteCard'
 export default {
   name: 'PlacesPage',
   components: {
-    BlogCard,
+    NoteCard,
   },
   computed: {
-    sampleBlogCards() {
-      return this.$store.state.sampleBlogCards
+    sampleNoteCards() {
+      return this.$store.state.sampleNoteCards
     },
     editPost: {
      get() {
@@ -41,7 +41,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.blog-cards {
+.note-cards {
   position: relative;
 
   .toggle-edit {

@@ -1,11 +1,11 @@
 <template>
-  <div class="blog-wrapper">
-    <div class="blog-content">
+  <div class="note-wrapper">
+    <div class="note-content">
       <div>
         <h2 v-if="post.welcomeScreen">{{ post.title }}</h2>
-        <h2 v-else>{{ post.title }}</h2>
-        <p v-if="post.welcomeScreen">{{ post.blogPost }}</p>
-        <p class="content-preview" v-else>{{ post.blogHTML }}</p>
+        <h2 v-else>{{ post.noteTitle }}</h2>
+        <p v-if="post.welcomeScreen">{{ post.notePost }}</p>
+        <p class="content-preview" v-else v-html="post.noteHTML"></p>
         <router-link class="link link-light" v-if="post.welcomeScreen" to="#">
           Login / Register <Arrow class="arrow arrow-light" />
         </router-link>
@@ -14,14 +14,11 @@
         </router-link>
       </div>
     </div>
-    <div class="blog-photo">
-      <img
-        v-if="post.welcomeScreen"
-        :src="require(`../assets/blogPhotos/${post.photo}.jpg`)"
-      />
+    <div class="note-photo">
+      <img v-if="post.welcomeScreen" :src="post.noteCoverPhoto" />
       <img
         v-else
-        :src="require(`../assets/blogPhotos/${post.blogCoverPhoto}.jpg`)"
+        :src="require(`../assets/blogPhotos/${post.noteCoverPhoto}.jpg`)"
       />
     </div>
   </div>
@@ -30,7 +27,7 @@
 <script>
 import Arrow from '../assets/Icons/arrow-right-light.svg'
 export default {
-  name: 'BlogPost',
+  name: 'NotePost',
   components: {
     Arrow,
   },
@@ -39,7 +36,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.blog-wrapper {
+.note-wrapper {
   display: flex;
   flex-direction: column;
   box-shadow: 0 4px 6px -1px #0000001a, 0 2px 4px -1px #0000000f;
@@ -49,7 +46,7 @@ export default {
     flex-direction: row;
   }
 
-  .blog-content {
+  .note-content {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -114,7 +111,7 @@ export default {
       }
     }
   }
-  .blog-photo {
+  .note-photo {
     order: 1;
     flex: 3;
     box-shadow: 0 4px 6px -1px #0000001a, 0 2px 4px -1px #0000000f;
@@ -136,18 +133,18 @@ export default {
   }
 
   &:nth-child(even) {
-    .blog-content {
+    .note-content {
       order: 2;
     }
 
-    .blog-photo {
+    .note-photo {
       order: 1;
     }
   }
 }
 
 .no-user:first-child {
-  .blog-content {
+  .note-content {
     background-color: #303030;
     color: #fff;
   }
