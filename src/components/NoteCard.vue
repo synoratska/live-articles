@@ -1,7 +1,7 @@
 <template>
   <div class="note-card">
     <div v-show="editPost" class="icons">
-      <div class="icon">
+      <div @click="editNote" class="icon">
         <Edit class="edit" />
       </div>
 
@@ -46,10 +46,16 @@ export default {
     },
   },
   methods: {
-    deletePost(){
+    deletePost() {
       this.$store.dispatch('deletePost', this.post.noteID)
-    }
-  }
+    },
+    editNote() {
+      this.$router.push({
+        name: 'EditNote',
+        params: { noteid: this.post.noteID },
+      })
+    },
+  },
 }
 </script>
 

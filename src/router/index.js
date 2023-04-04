@@ -10,6 +10,7 @@ import Admin from '@/views/Admin'
 import CreateNote from '@/views/CreateNote'
 import NotePreview from '@/views/NotePreview'
 import ViewNote from '@/views/ViewNote'
+import EditNote from '@/views/EditNote'
 
 Vue.use(VueRouter)
 
@@ -88,6 +89,15 @@ const routes = [
     component: ViewNote,
     meta: {
       title: 'View Note',
+    },
+  },
+
+  {
+    path: '/edit-note/:noteid',
+    name: 'EditNote',
+    component: EditNote,
+    meta: {
+      title: 'Edit A Note',
     },
   },
 

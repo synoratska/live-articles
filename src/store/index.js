@@ -94,8 +94,16 @@ export default new Vuex.Store({
     },
 
     filterNotePost(state, payload) {
-      state.notePosts = state.notePosts.filter(post => post.noteID !== payload)
-    }
+      state.notePosts = state.notePosts.filter(
+        (post) => post.noteID !== payload
+      )
+    },
+    setNoteState(state, payload) {
+      state.noteTitle = payload.noteTitle
+      state.noteHTML = payload.noteHTML
+      state.notePhotoFileURL = payload.noteCoverPhoto
+      state.notePhotoName = payload.noteCoverPhotoName
+    },
   },
   actions: {
     async getCurrentUser({ commit }, user) {
