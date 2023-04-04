@@ -49,7 +49,7 @@ export default new Vuex.Store({
   },
   getters: {
     notePostsFeed(state) {
-      return state.notePosts.slice(0, 1)
+      return state.notePosts.slice(0, 2)
     },
     notePostsCards(state) {
       return state.notePosts.slice(2, 6)
@@ -138,12 +138,12 @@ export default new Vuex.Store({
             noteCoverPhoto: doc.data().noteCoverPhoto,
             noteTitle: doc.data().noteTitle,
             noteDate: doc.data().date,
+            noteCoverPhotoName: doc.data().noteCoverPhotoName
           }
           state.notePosts.push(data)
-          console.log(state.notePosts)
         }
       })
-      state.postLoaded = true
+      state.noteLoaded = true
     },
     async updateUserSettings({ commit, state }) {
       const dataBase = await db.collection('users').doc(state.profileId)

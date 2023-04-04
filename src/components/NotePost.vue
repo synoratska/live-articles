@@ -15,10 +15,9 @@
       </div>
     </div>
     <div class="note-photo">
-      <img v-if="post.welcomeScreen" :src="post.noteCoverPhoto" />
+      <img v-if="post.welcomeScreen"  :src="require(`../assets/blogPhotos/${post.noteCoverPhoto}.jpg`)" />
       <img
-        v-else
-        :src="require(`../assets/blogPhotos/${post.noteCoverPhoto}.jpg`)"
+        v-else :src="post.noteCoverPhoto"
       />
     </div>
   </div>

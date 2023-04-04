@@ -2,7 +2,7 @@
   <div class="modal" ref-modal>
     <div class="modal-content">
       <close @click="closePreview" class="icon" />
-      <img :src="this.noteCoverPhoto" alt="" />
+      <img :src="this.noteCoverPhoto" />
     </div>
   </div>
 </template>
