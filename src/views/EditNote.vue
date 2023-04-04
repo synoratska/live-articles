@@ -40,9 +40,9 @@
         />
       </div>
       <div class="note-actions">
-        <button @click="uploadNote">Publish Note</button>
+        <button @click="updateNote">Save Changes</button>
         <router-link class="router-button" :to="{ name: 'NotePreview' }"
-          >Note Preview</router-link
+          >Preview Changes</router-link
         >
       </div>
     </div>
@@ -82,8 +82,8 @@ export default {
     }
   },
   async mounted() {
-    this.routeID = this.$route.params.noteid;
-    this.currentNote = await this.$store.state.notePosts.filter(post => {
+    this.routeID = this.$route.params.noteid
+    this.currentNote = await this.$store.state.notePosts.filter((post) => {
       return post.noteID === this.routeID
     })
     this.$store.commit('setNoteState', this.currentNote[0])
@@ -117,7 +117,8 @@ export default {
         }
       )
     },
-    uploadNote() {
+    async updateNote() {
+      const dataBase = await db.collection('notePosts').doc(this.routeID)
       if (this.noteTitle.length !== 0 && this.noteHTML.length !== 0) {
         if (this.file) {
           this.loading = true
@@ -134,19 +135,14 @@ export default {
             },
             async () => {
               const downloadURL = await docRef.getDownloadURL()
-              const timestamp = await Date.now()
-              const dataBase = await db.collection('notePosts').doc()
 
-              await dataBase.set({
-                noteID: dataBase.id,
+              await dataBase.update({
                 noteHTML: this.noteHTML,
                 noteCoverPhoto: downloadURL,
                 noteCoverPhotoName: this.noteCoverPhotoName,
                 noteTitle: this.noteTitle,
-                profileId: this.profileId,
-                date: timestamp,
               })
-              await this.$store.dispatch('getNote')
+              await this.$store.dispatch('updateNote', this.routeID)
               this.loading = false
               this.$router.push({
                 name: 'ViewNote',
@@ -156,9 +152,14 @@ export default {
           )
           return
         }
-        this.error = true
-        this.errorMsg = 'Please ensure you uploaded a cover photo'
-        setTimeout(() => (this.error = false), 5000)
+        this.loading = true
+        await dataBase.update({
+          noteHTML: this.noteHTML,
+          noteTitle: this.noteTitle,
+        })
+        await this.$store.dispatch('updateNote', this.routeID)
+        this.loading = false
+        this.$router.push({name: 'ViewNote', params: {noteid: dataBase.id}})
         return
       }
       this.error = true

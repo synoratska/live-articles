@@ -135,6 +135,10 @@ export default new Vuex.Store({
       })
       state.noteLoaded = true
     },
+    async updateNote({ commit, dispatch }, payload) {
+      commit('filterNotePost', payload)
+      await dispatch('getNote')
+    },
     async deletePost({ commit }, payload) {
       const getNote = await db.collection('notePosts').doc(payload)
       await getNote.delete()
