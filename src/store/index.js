@@ -92,6 +92,10 @@ export default new Vuex.Store({
     changeUsername(state, payload) {
       state.profileUsername = payload
     },
+
+    filterNotePost(state, payload) {
+      state.notePosts = state.notePosts.filter(post => post.noteID !== payload)
+    }
   },
   actions: {
     async getCurrentUser({ commit }, user) {
@@ -116,12 +120,17 @@ export default new Vuex.Store({
             noteCoverPhoto: doc.data().noteCoverPhoto,
             noteTitle: doc.data().noteTitle,
             noteDate: doc.data().date,
-            noteCoverPhotoName: doc.data().noteCoverPhotoName
+            noteCoverPhotoName: doc.data().noteCoverPhotoName,
           }
           state.notePosts.push(data)
         }
       })
       state.noteLoaded = true
+    },
+    async deletePost({ commit }, payload) {
+      const getNote = await db.collection('notePosts').doc(payload)
+      await getNote.delete()
+      commit('filterNotePost', payload)
     },
     async updateUserSettings({ commit, state }) {
       const dataBase = await db.collection('users').doc(state.profileId)

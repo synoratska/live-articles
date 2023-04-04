@@ -5,7 +5,7 @@
         <Edit class="edit" />
       </div>
 
-      <div class="icon">
+      <div @click="deletePost" class="icon">
         <Delete class="delete" />
       </div>
     </div>
@@ -45,6 +45,11 @@ export default {
       return this.$store.state.editPost
     },
   },
+  methods: {
+    deletePost(){
+      this.$store.dispatch('deletePost', this.post.noteID)
+    }
+  }
 }
 </script>
 
