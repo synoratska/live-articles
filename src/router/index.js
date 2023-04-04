@@ -83,7 +83,7 @@ const routes = [
   },
 
   {
-    path: '/view-note',
+    path: '/view-note/:noteid',
     name: 'ViewNote',
     component: ViewNote,
     meta: {

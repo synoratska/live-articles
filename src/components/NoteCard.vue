@@ -18,7 +18,10 @@
           new Date(post.noteDate).toLocaleString('en-us', { dateStyle: 'long' })
         }}
       </h6>
-      <router-link class="link" to="#">
+      <router-link
+        class="link"
+        :to="{ name: 'ViewNote', params: { noteid: this.post.noteID } }"
+      >
         View The Post <Arrow class="arrow" />
       </router-link>
     </div>

@@ -137,8 +137,9 @@ export default {
                 profileId: this.profileId,
                 date: timestamp,
               })
+              await this.$store.dispatch('getNote')
               this.loading = false
-              this.$router.push({ name: 'ViewNote' })
+              this.$router.push({ name: 'ViewNote', params: {noteid: dataBase.id} })
             }
           )
           return

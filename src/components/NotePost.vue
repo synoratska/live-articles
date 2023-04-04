@@ -9,16 +9,21 @@
         <router-link class="link link-light" v-if="post.welcomeScreen" to="#">
           Login / Register <Arrow class="arrow arrow-light" />
         </router-link>
-        <router-link class="link" v-else to="#">
+        <router-link
+          class="link"
+          v-else
+          :to="{ name: 'ViewNote', params: { noteid: this.post.noteID } }"
+        >
           View the Post <Arrow class="arrow" />
         </router-link>
       </div>
     </div>
     <div class="note-photo">
-      <img v-if="post.welcomeScreen"  :src="require(`../assets/blogPhotos/${post.noteCoverPhoto}.png`)" />
       <img
-        v-else :src="post.noteCoverPhoto"
+        v-if="post.welcomeScreen"
+        :src="require(`../assets/blogPhotos/${post.photo}.jpg`)"
       />
+      <img v-else :src="post.noteCoverPhoto" />
     </div>
   </div>
 </template>
