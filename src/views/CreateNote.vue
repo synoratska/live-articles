@@ -114,7 +114,7 @@ export default {
           this.loading = true
           const storageRef = firebase.storage().ref()
           const docRef = storageRef.child(
-            `documents/NoteCoverPhoto${this.$store.state.notePhotoName}`
+            `documents/NoteCoverPhotos/${this.$store.state.notePhotoName}`
           )
           docRef.put(this.file).on(
             'state_changed',

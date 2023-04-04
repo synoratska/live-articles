@@ -32,6 +32,7 @@ export default {
       }
     })
     this.checkRoute()
+    this.$store.dispatch('getNote')
   },
   mounted() {},
   methods: {
@@ -159,7 +160,7 @@ button,
   color: #ce1313;
 }
 
-.blog-card-wrap {
+.note-card-wrap {
   position: relative;
   padding: 80px 16px;
   background-color: #f1f1f1;
@@ -167,7 +168,7 @@ button,
     padding: 100px 16px;
   }
 
-  .blog-cards {
+  .note-cards {
     display: grid;
     gap: 32px;
     grid-template-columns: 1fr;

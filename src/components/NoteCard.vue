@@ -1,5 +1,5 @@
 <template>
-  <div class="blog-card">
+  <div class="note-card">
     <div v-show="editPost" class="icons">
       <div class="icon">
         <Edit class="edit" />
@@ -9,10 +9,15 @@
         <Delete class="delete" />
       </div>
     </div>
-    <img :src="require(`@/assets/blogCards/${post.blogCoverPhoto}.jpg`)" />
+    <img :src="post.noteCoverPhoto" />
     <div class="info">
-      <h4>{{ post.blogTitle }}</h4>
-      <h6>Posted on: {{ post.blogDate }}</h6>
+      <h4>{{ post.noteTitle }}</h4>
+      <h6>
+        Posted on:
+        {{
+          new Date(post.noteDate).toLocaleString('en-us', { dateStyle: 'long' })
+        }}
+      </h6>
       <router-link class="link" to="#">
         View The Post <Arrow class="arrow" />
       </router-link>
@@ -25,7 +30,7 @@ import Arrow from '@/assets/Icons/arrow-right-light.svg'
 import Edit from '@/assets/Icons/edit-regular.svg'
 import Delete from '@/assets/Icons/trash-regular.svg'
 export default {
-  name: 'BlogCard',
+  name: 'NoteCard',
   components: {
     Arrow,
     Edit,
@@ -33,15 +38,15 @@ export default {
   },
   props: ['post'],
   computed: {
-    editPost(){
+    editPost() {
       return this.$store.state.editPost
-    }
-  }
+    },
+  },
 }
 </script>
 
 <style lang="scss" scoped>
-.blog-card {
+.note-card {
   position: relative;
   cursor: pointer;
   display: flex;
@@ -53,8 +58,7 @@ export default {
 
   &:hover {
     transform: rotateZ(-1deg) scale(1.01);
-    box-shadow: 0 4px 6px -1px #0000001a,
-      0 2px 4px -1px #0000000f;
+    box-shadow: 0 4px 6px -1px #0000001a, 0 2px 4px -1px #0000000f;
   }
 
   .icons {
@@ -86,62 +90,63 @@ export default {
       }
 
       &:nth-child {
-       margin-right: 8px;
+        margin-right: 8px;
       }
 
-      .edit, .delete {
-       pointer-events: none;
-       height: 15px;
-       width: auto;
+      .edit,
+      .delete {
+        pointer-events: none;
+        height: 15px;
+        width: auto;
       }
     }
   }
 
- img {
-  display: block;
-  border-radius: 10px 0;
-  width: 100%;
-  max-height: 190px;
-  object-fit: cover;
- }
-
- .info {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  z-index: 3;
-  padding: 32px 16px;
-  color: #000;
-
-  h4 {
-   padding-bottom: 8px;
-   font-size: 20px;
-   font-weight: 300;
+  img {
+    display: block;
+    border-radius: 10px 0;
+    width: 100%;
+    max-height: 190px;
+    object-fit: cover;
   }
 
-  h6 {
-   font-weight: 400;
-   font-size: 12px;
-   padding-bottom: 16px;
+  .info {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    z-index: 3;
+    padding: 32px 16px;
+    color: #000;
+
+    h4 {
+      padding-bottom: 8px;
+      font-size: 20px;
+      font-weight: 300;
+    }
+
+    h6 {
+      font-weight: 400;
+      font-size: 12px;
+      padding-bottom: 16px;
+    }
+
+    .link {
+      display: inline-flex;
+      align-items: center;
+      font-weight: 500;
+      padding-top: 20px;
+      font-size: 12px;
+      padding-bottom: 4px;
+      transition: 0.5s ease-in all;
+
+      &:hover {
+        color: #303030cc;
+      }
+
+      .arrow {
+        width: 10px;
+      }
+    }
   }
-
-  .link {
-   display: inline-flex;
-   align-items: center;
-   font-weight: 500;
-   padding-top: 20px;
-   font-size: 12px;
-   padding-bottom: 4px;
-   transition: .5s ease-in all;
-
-   &:hover {
-    color: #303030cc
-   }
-
-   .arrow {
-    width: 10px;
-   }
-  }
- }
 }
 </style>
