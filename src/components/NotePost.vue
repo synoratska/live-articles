@@ -15,7 +15,7 @@
       </div>
     </div>
     <div class="note-photo">
-      <img v-if="post.welcomeScreen"  :src="require(`../assets/blogPhotos/${post.noteCoverPhoto}.jpg`)" />
+      <img v-if="post.welcomeScreen"  :src="require(`../assets/blogPhotos/${post.noteCoverPhoto}.png`)" />
       <img
         v-else :src="post.noteCoverPhoto"
       />
@@ -84,7 +84,7 @@ export default {
       .content-preview {
         font-size: 17px;
         max-height: 24px;
-        max-width: 250px;
+        max-width: 460px;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;

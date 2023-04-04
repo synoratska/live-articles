@@ -7,7 +7,7 @@
       </div>
       <NoteCard
         :post="post"
-        v-for="(post, ind) in sampleNoteCards"
+        v-for="(post, ind) in notePosts"
         :key="ind"
       />
     </div>
@@ -22,8 +22,8 @@ export default {
     NoteCard,
   },
   computed: {
-    sampleNoteCards() {
-      return this.$store.state.sampleNoteCards
+    notePosts() {
+      return this.$store.state.notePosts
     },
     editPost: {
      get() {

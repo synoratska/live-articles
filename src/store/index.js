@@ -8,28 +8,6 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    sampleNoteCards: [
-      {
-        noteTitle: 'Blog Card #1',
-        noteCoverPhoto: '001',
-        noteDate: 'March 15, 2023',
-      },
-      {
-        noteTitle: 'Blog Card #2',
-        noteCoverPhoto: '002',
-        noteDate: 'August 15, 2023',
-      },
-      {
-        noteTitle: 'Blog Card #3',
-        noteCoverPhoto: '003',
-        noteDate: 'September 15, 2023',
-      },
-      {
-        noteTitle: 'Blog Card #4',
-        noteCoverPhoto: '004',
-        noteDate: 'July 15, 2023',
-      },
-    ],
     notePosts: [],
     noteLoaded: null,
     noteHTML: 'Write your blog title here...',
@@ -49,7 +27,7 @@ export default new Vuex.Store({
   },
   getters: {
     notePostsFeed(state) {
-      return state.notePosts.slice(0, 2)
+      return state.notePosts.slice(1, 3)
     },
     notePostsCards(state) {
       return state.notePosts.slice(2, 6)
