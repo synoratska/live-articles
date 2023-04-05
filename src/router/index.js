@@ -11,6 +11,9 @@ import CreateNote from '@/views/CreateNote'
 import NotePreview from '@/views/NotePreview'
 import ViewNote from '@/views/ViewNote'
 import EditNote from '@/views/EditNote'
+import PhotoGallery from '@/views/Gallery'
+import firebase from 'firebase/app'
+import 'firebase/auth'
 
 Vue.use(VueRouter)
 
@@ -21,38 +24,47 @@ const routes = [
     component: Home,
     meta: {
       title: 'Home',
+      requiresAuth: false,
     },
   },
+
   {
     path: '/places',
     name: 'Places',
     component: Places,
     meta: {
       title: 'Places',
+      requiresAuth: false,
     },
   },
+
   {
     path: '/login',
     name: 'Login',
     component: Login,
     meta: {
       title: 'Login',
+      requiresAuth: false,
     },
   },
+
   {
     path: '/signup',
     name: 'Signup',
     component: Register,
     meta: {
       title: 'Signup',
+      requiresAuth: false,
     },
   },
+
   {
     path: '/forgot-password',
     name: 'ForgotPassword',
     component: ForgotPassword,
     meta: {
       title: 'Forgot Password',
+      requiresAuth: false,
     },
   },
 
@@ -62,6 +74,7 @@ const routes = [
     component: Profile,
     meta: {
       title: 'Profile',
+      requiresAuth: true,
     },
   },
 
@@ -71,6 +84,7 @@ const routes = [
     component: CreateNote,
     meta: {
       title: 'Create A Note',
+      requiresAuth: true,
     },
   },
 
@@ -80,6 +94,7 @@ const routes = [
     component: NotePreview,
     meta: {
       title: 'Note Preview',
+      requiresAuth: true,
     },
   },
 
@@ -89,6 +104,7 @@ const routes = [
     component: ViewNote,
     meta: {
       title: 'View Note',
+      requiresAuth: false,
     },
   },
 
@@ -98,6 +114,7 @@ const routes = [
     component: EditNote,
     meta: {
       title: 'Edit A Note',
+      requiresAuth: true,
     },
   },
 
@@ -107,6 +124,19 @@ const routes = [
     component: Admin,
     meta: {
       title: 'Admin',
+      requiresAuth: true,
+      requiresAdmin: true,
+    },
+  },
+
+  {
+    path: '/photo-gallery',
+    name: 'PhotoGallery',
+    component: PhotoGallery,
+    meta: {
+      title: 'Photo Gallery',
+      requiresAuth: true,
+      requiresAdmin: true,
     },
   },
 ]
@@ -120,6 +150,28 @@ const router = new VueRouter({
 router.beforeEach((to, from, next) => {
   document.title = `${to.meta.title} | UkrainianPortal`
   next()
+})
+
+router.beforeEach(async (to, from, next) => {
+  let user = firebase.auth().currentUser
+  let admin = null
+  if (user) {
+    let token = await user.getIdTokenResult()
+    admin = token.claims.admin
+  }
+  if (to.matched.some((res) => res.meta.requiresAuth)) {
+    if (user) {
+      if (to.matched.some((res) => res.meta.requiresAdmin)) {
+        if (admin) {
+          return next()
+        }
+        return next({ name: 'Home' })
+      }
+      return next()
+    }
+    return next({ name: 'Home' })
+  }
+  return next()
 })
 
 export default router

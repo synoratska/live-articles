@@ -13,7 +13,7 @@
             >Places</router-link
           >
           <router-link class="link"  :to="{ name: 'CreateNote' }" >Create A Note</router-link>
-          <router-link v-if="admin" class="link" to="#"
+          <router-link v-if="admin" class="link" :to="{name: 'PhotoGallery'}"
             >Gallery</router-link
           >
           <router-link v-if="!user" class="link" :to="{ name: 'Login' }"
@@ -69,7 +69,7 @@
         <router-link class="link" :to="{ name: 'Home' }">Home</router-link>
         <router-link class="link" :to="{ name: 'Places' }">Places</router-link>
         <router-link class="link" :to="{name: 'CreateNote'}">Create A Note</router-link>
-        <router-link v-if="admin" class="link" :to="{ name: 'Home' }"
+        <router-link v-if="admin" class="link" :to="{ name: 'PhotoGallery' }"
           >Gallery</router-link
         >
         <router-link v-if="!user" class="link" :to="{ name: 'Login' }"
