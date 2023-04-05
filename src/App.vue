@@ -98,7 +98,7 @@ export default {
 
 .arrow-light {
   path {
-    fill: #fff;
+    fill: #f7faa5;
   }
 }
 

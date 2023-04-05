@@ -327,6 +327,11 @@ export default {
 
     button {
       margin-right: 16px;
+      color: #f7faa5;
+    }
+
+    .router-button {
+        color: #f7faa5;
     }
   }
 }

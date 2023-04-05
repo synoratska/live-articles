@@ -72,7 +72,10 @@ export default {
 }
 
 .updates {
-  background-color: #7e7c7c;
+  background: url('@/assets/blogCards/008.jpg');
+  background-size: cover;
+  background-position: center bottom;
+ 
   .container {
     padding: 100px 25px;
     display: flex;
@@ -93,11 +96,12 @@ export default {
     }
 
     h2 {
-      font-weight: 300;
+      font-weight: 400;
       font-size: 32px;
       width: 100%;
       text-align: center;
       text-transform: uppercase;
+      color: #fff;
 
       @media (min-width: 800px) {
         max-width: 550px;

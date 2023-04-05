@@ -139,7 +139,7 @@ header {
   box-shadow: 0 4px 6px -1px #88866f1a, 0 2px 4px -1px #b4b06f0f;
   z-index: 99;
     @media (min-width: 770px) {
-      padding: 0 25px;
+      padding: 0 10px 0 25px;
     }
 
     @media (max-width: 769px) {
