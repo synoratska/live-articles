@@ -67,10 +67,12 @@ export default {
     font-weight: 300;
     font-size: 28px;
     margin-bottom: 32px;
+    color: #f0f0d5ea;
   }
 }
 
 .updates {
+  background-color: #7e7c7c;
   .container {
     padding: 100px 25px;
     display: flex;

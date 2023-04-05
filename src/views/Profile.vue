@@ -110,7 +110,7 @@ export default {
       box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
         0 2px 4px -1px rgba(0, 0, 0, 0.06);
       padding: 32px;
-      background-color: #f1f1f1;
+      background-color: #e0e1c0;
       display: flex;
       flex-direction: column;
       max-width: 600px;
@@ -121,20 +121,21 @@ export default {
         height: 80px;
         font-size: 32px;
         background-color: #303030;
-        color: #fff;
+        color: #afb515;
         display: flex;
         align-self: center;
         align-items: center;
         justify-content: center;
-        border-radius: 50%;
+        border-radius: 18px 0;
+        font-weight: 500;
       }
       .admin-badge {
         display: flex;
         align-self: center;
-        color: #fff;
+        color: #f7faa5;
         font-size: 14px;
         padding: 8px 24px;
-        border-radius: 8px 0 8px 0;
+        border-radius: 0 8px;
         background-color: #303030;
         margin: 16px 0;
         text-align: center;
@@ -143,6 +144,10 @@ export default {
           width: 14px;
           height: auto;
           margin-right: 8px;
+        }
+
+        span {
+          color: #f7faa5 !important;
         }
       }
       .input {
@@ -155,9 +160,10 @@ export default {
         input {
           width: 100%;
           border: none;
-          background-color: #f2f7f6;
+          background-color: #f5f3d4;
           padding: 8px;
           height: 50px;
+          border-radius: 10px 0;
           @media (min-width: 900px) {
           }
           &:focus {
@@ -167,6 +173,7 @@ export default {
       }
       button {
         align-self: center;
+        color: #f7faa5;
       }
     }
   }

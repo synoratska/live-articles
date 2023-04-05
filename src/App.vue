@@ -81,7 +81,7 @@ export default {
   cursor: pointer;
   text-decoration: none;
   text-transform: uppercase;
-  color: black;
+  color: #000;
 }
 
 .link-light {
@@ -102,6 +102,10 @@ export default {
   }
 }
 
+span {
+  color: #000 !important;
+}
+
 button,
 .router-button {
   transition: 500ms ease all;
@@ -109,7 +113,7 @@ button,
   margin-top: 24px;
   padding: 12px 24px;
   background-color: #303030;
-  color: #fff;
+  color: #f7faa5;
   border-radius: 10px 0;
   border: none;
   text-transform: uppercase;
@@ -163,7 +167,7 @@ button,
 .note-card-wrap {
   position: relative;
   padding: 80px 16px;
-  background-color: #f1f1f1;
+  background-color: #3c3a3a;
   @media (min-width: 500px) {
     padding: 100px 16px;
   }

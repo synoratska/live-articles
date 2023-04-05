@@ -34,6 +34,7 @@ export default {
     max-width: 1000px;
     padding: 60px 25px;
   }
+
   .ql-editor {
     padding: 0;
   }

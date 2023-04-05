@@ -6,7 +6,7 @@
         Posted on:
         {{
           new Date(this.currentNote[0].noteDate).toLocaleString('en-us', {
-            dateStyle: 'long'
+            dateStyle: 'long',
           })
         }}
       </h4>

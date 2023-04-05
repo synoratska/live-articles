@@ -12,8 +12,10 @@
           <router-link class="link" :to="{ name: 'Places' }"
             >Places</router-link
           >
-          <router-link class="link"  :to="{ name: 'CreateNote' }" >Create A Note</router-link>
-          <router-link v-if="admin" class="link" :to="{name: 'PhotoGallery'}"
+          <router-link class="link" :to="{ name: 'CreateNote' }"
+            >Create A Note</router-link
+          >
+          <router-link v-if="admin" class="link" :to="{ name: 'PhotoGallery' }"
             >Gallery</router-link
           >
           <router-link v-if="!user" class="link" :to="{ name: 'Login' }"
@@ -68,7 +70,9 @@
       <ul class="mobile-nav" v-if="mobileNav">
         <router-link class="link" :to="{ name: 'Home' }">Home</router-link>
         <router-link class="link" :to="{ name: 'Places' }">Places</router-link>
-        <router-link class="link" :to="{name: 'CreateNote'}">Create A Note</router-link>
+        <router-link class="link" :to="{ name: 'CreateNote' }"
+          >Create A Note</router-link
+        >
         <router-link v-if="admin" class="link" :to="{ name: 'PhotoGallery' }"
           >Gallery</router-link
         >
@@ -130,10 +134,19 @@ export default {
 
 <style lang="scss" scoped>
 header {
-  background-color: #fff;
+  background-color: #231f1f;
   padding: 0 25px;
-  box-shadow: 0 4px 6px -1px #0000001a, 0 2px 4px -1px #0000000f;
+  box-shadow: 0 4px 6px -1px #88866f1a, 0 2px 4px -1px #b4b06f0f;
   z-index: 99;
+    @media (min-width: 770px) {
+      padding: 0 25px;
+    }
+
+    @media (max-width: 769px) {
+      padding: 0 75px 0 25px;
+    }
+
+
 
   .link {
     font-weight: 500;
@@ -157,6 +170,10 @@ header {
         color: #32119d;
         text-decoration: none;
       }
+
+      .header span {
+        color: #ccd313 !important;
+      }
     }
 
     .nav-links {
@@ -173,6 +190,7 @@ header {
         }
         .link {
           margin-right: 32px;
+          color: #f7faa5;
         }
 
         .link:last-child {
@@ -188,12 +206,14 @@ header {
         justify-content: center;
         width: 40px;
         height: 40px;
-        border-radius: 50%;
+        border-radius: 10px 0;
         color: #fff;
         background-color: #303030;
 
         span {
           pointer-events: none;
+          color: #ccd313 !important;
+          font-weight: 500;
         }
         .profile-menu {
           position: absolute;
@@ -269,7 +289,7 @@ header {
     display: none;
     cursor: pointer;
     position: absolute;
-    top: 27px;
+    top: 32px;
     right: 32px;
     height: 25px;
     width: auto;
@@ -293,7 +313,7 @@ header {
 
     .link {
       padding: 15px 0;
-      color: #fff;
+      color: #f7faa5;
     }
   }
 

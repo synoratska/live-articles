@@ -1,11 +1,11 @@
 <template>
   <div class="note-card">
     <div v-show="editPost" class="icons">
-      <div @click="editNote" class="icon">
+      <div @click="editNote" class="icon edit">
         <Edit class="edit" />
       </div>
 
-      <div @click="deletePost" class="icon">
+      <div @click="deletePost" class="icon delete">
         <Delete class="delete" />
       </div>
     </div>
@@ -66,7 +66,7 @@ export default {
   display: flex;
   flex-direction: column;
   border-radius: 10px 0;
-  background-color: #fff;
+  background-color: #f0f0d5ea;
   min-height: 420px;
   transition: 0.5s ease all;
 
@@ -88,9 +88,12 @@ export default {
       align-items: center;
       width: 35px;
       height: 35px;
-      border-radius: 50%;
-      background-color: #fff;
+      border-radius: 0 10px;
+      background-color: #d8dcb8;
       transition: 0.5s ease all;
+      &:last-child {
+        margin-left: 5px;
+      }
 
       &:hover {
         background-color: #303030;
@@ -113,6 +116,14 @@ export default {
         height: 15px;
         width: auto;
       }
+    }
+
+    .delete {
+      color: #a41717;
+    }
+
+    .edit {
+      color: green;
     }
   }
 

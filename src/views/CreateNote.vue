@@ -13,7 +13,7 @@
           v-model="noteTitle"
         />
         <div class="upload-file">
-          <label for="note-photo">Upload Cover Photo</label>
+          <label class="label" for="note-photo">Upload Cover Photo</label>
           <input
             type="file"
             ref="notePhoto"
@@ -22,7 +22,7 @@
             accept=".png, .jpg, .jpeg"
           />
           <button
-            class="preview"
+            class="preview label"
             @click="openPreview"
             :class="{ 'button-inactive': !this.$store.state.notePhotoFileURL }"
           >
@@ -139,7 +139,10 @@ export default {
               })
               await this.$store.dispatch('getNote')
               this.loading = false
-              this.$router.push({ name: 'ViewNote', params: {noteid: dataBase.id} })
+              this.$router.push({
+                name: 'ViewNote',
+                params: { noteid: dataBase.id },
+              })
             }
           )
           return
@@ -187,6 +190,10 @@ export default {
   position: relative;
   height: 100%;
 
+  .container {
+     background-color: #e0e1c0 !important;
+  }
+
   button {
     margin-top: 0;
   }
@@ -205,13 +212,17 @@ export default {
     cursor: pointer;
     border-radius: 20px 0;
     padding: 12px 24px;
-    color: #fff;
+    color: #ffffff;
     background-color: #303030;
     text-decoration: none;
 
     &:hover {
       background-color: #303030b3;
     }
+  }
+
+  .label {
+    color: #f7faa5;
   }
 
   .container {
@@ -249,6 +260,7 @@ export default {
 
     input:nth-child(1) {
       min-width: 300px;
+      background-color: #f5f3d4;
     }
 
     input {

@@ -51,6 +51,7 @@ export default {
   }
 
   .note-content {
+    background-color: #f0f0d5ea;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -100,7 +101,7 @@ export default {
         align-items: center;
         margin-top: 32px;
         padding-bottom: 4px;
-        border-bottom: 1px solid transparent;
+        border-bottom: 1px solid #000;
         transition: 0.5s ease-in all;
 
         &:hover {
