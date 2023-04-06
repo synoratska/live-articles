@@ -6,8 +6,8 @@
         <h2 v-else>{{ post.noteTitle }}</h2>
         <p v-if="post.welcomeScreen">{{ post.notePost }}</p>
         <p class="content-preview" v-else v-html="post.noteHTML"></p>
-        <router-link class="link link-light" v-if="post.welcomeScreen" to="#">
-          Login / Register <Arrow class="arrow arrow-light" />
+        <router-link class="link link" v-if="post.welcomeScreen" to="#">
+          Login / Register <Arrow class="arrow arrow" />
         </router-link>
         <router-link
           class="link"
@@ -41,6 +41,8 @@ export default {
 
 <style lang="scss" scoped>
 .note-wrapper {
+  padding: 10px 0;
+  background-color: #f0f0d5ea;
   display: flex;
   flex-direction: column;
   box-shadow: 0 4px 6px -1px #0000001a, 0 2px 4px -1px #0000000f;

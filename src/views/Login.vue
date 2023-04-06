@@ -7,7 +7,7 @@
           Register here
         </router-link>
       </p>
-      <h2>Login to Ukrainian Portal</h2>
+      <h2>Ukrainian<span>Portal</span></h2>
       <div class="inputs">
         <div class="input">
           <input type="text" placeholder="Email" v-model="email" />
@@ -60,7 +60,8 @@ export default {
           this.error = false
           this.errorMsg = ''
           // console.log(firebase.auth().currentUser.uid)
-        }).catch(err => {
+        })
+        .catch((err) => {
           this.error = true
           this.errorMsg = err.message
         })
@@ -176,13 +177,22 @@ export default {
     display: none;
     flex: 2;
     background-size: cover;
-    background-image: url('@/assets/background.png');
+    background-image: url('@/assets/bg-login.jpg');
     width: 100%;
     height: 100%;
 
     @media (min-width: 900px) {
       display: initial;
     }
+  }
+}
+.login {
+  h2 {
+    color: #32119d !important;
+  }
+
+  span {
+    color: #e8de21 !important;
   }
 }
 </style>

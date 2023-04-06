@@ -7,7 +7,9 @@
           Login
         </router-link>
       </p>
-      <h2>Create Your Ukrainian Portal Account</h2>
+      <h2>Create Your</h2>
+      <h3>Ukrainian <span> Portal</span></h3>
+      <h2>Account</h2>
       <div class="inputs">
         <div class="input">
           <input type="text" placeholder="First Name" v-model="firstName" />
@@ -109,6 +111,33 @@ export default {
 .register {
   h2 {
     max-width: 350px;
+    margin-bottom: 0;
+    &:last-of-type {
+    margin-bottom: 20px;
+    }
+  } 
+
+
+  h3 {
+    color: #32119d !important;
+    font-size: 40px;
+  }
+  span {
+    color: #e8de21 !important;
   }
 }
+
+
+  .background {
+    display: none;
+    flex: 2;
+    background-size: cover;
+    background-image: url('@/assets/bg-signup.jpg');
+    width: 100%;
+    height: 100%;
+
+    @media (min-width: 900px) {
+      display: initial;
+    }
+  }
 </style>

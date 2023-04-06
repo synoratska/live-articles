@@ -2,6 +2,15 @@
   <div class="home">
     <NotePost v-if="!user" :post="welcomeScreen" />
     <NotePost :post="post" v-for="(post, ind) in notePostsFeed" :key="ind" />
+
+    <div v-if="!user" class="updates">
+      <div class="container">
+        <h2>Never miss a post. Register for your free account today!</h2>
+        <router-link class="router-button" :to="{ name: 'Signup' }">
+          Register for Ukrainian Portal <Arrow class="arrow arrow-light" />
+        </router-link>
+      </div>
+    </div>
     <div class="note-card-wrap">
       <div class="container">
         <h3>View More Recent Blogs</h3>
@@ -12,14 +21,6 @@
             :key="ind"
           />
         </div>
-      </div>
-    </div>
-    <div v-if="!user" class="updates">
-      <div class="container">
-        <h2>Never miss a post. Register for your free account today!</h2>
-        <router-link class="router-button" to="#">
-          Register for Ukrainian Portal <Arrow class="arrow arrow-light" />
-        </router-link>
       </div>
     </div>
   </div>
@@ -75,7 +76,8 @@ export default {
   background: url('@/assets/blogCards/008.jpg');
   background-size: cover;
   background-position: center bottom;
- 
+  margin: 30px;
+
   .container {
     padding: 100px 25px;
     display: flex;

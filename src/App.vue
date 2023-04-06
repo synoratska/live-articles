@@ -64,6 +64,7 @@ export default {
   padding: 0;
   box-sizing: border-box;
   font-family: 'Quicksand', sans-serif;
+ 
 }
 
 .app {
@@ -167,7 +168,10 @@ button,
 .note-card-wrap {
   position: relative;
   padding: 80px 16px;
-  background-color: #3c3a3a;
+  background: linear-gradient(-45deg, #dcd628, #bdbd07, #1a529c, #0b0e6b  );
+  background-size: cover;
+  background-position: center top;
+  
   @media (min-width: 500px) {
     padding: 100px 16px;
   }
@@ -190,4 +194,5 @@ button,
     }
   }
 }
+
 </style>
