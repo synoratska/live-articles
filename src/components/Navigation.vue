@@ -293,6 +293,7 @@ header {
     right: 32px;
     height: 25px;
     width: auto;
+    color: #f7faa59a;
 
     @media only screen and (max-width: 770px) {
       display: block;
