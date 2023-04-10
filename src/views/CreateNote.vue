@@ -191,7 +191,7 @@ export default {
   height: 100%;
 
   .container {
-     background-color: #e0e1c0 !important;
+    background-color: #e0e1c0 !important;
   }
 
   button {
@@ -223,6 +223,13 @@ export default {
 
   .label {
     color: #f7faa5;
+    @media (max-width: 750px) {
+      padding: 10px 14px;
+      font-size: 12px;
+    }
+    @media (max-width: 710px) {
+      padding: 8px 12px;
+    }
   }
 
   .container {
@@ -245,8 +252,12 @@ export default {
     margin-bottom: 10px;
     background-color: #303030;
     opacity: 1;
-    transition: 0.5s ease all p {
+    transition: 0.5s ease all;
+    p {
       font-size: 14px;
+      @media (max-width: 610px){
+        font-size: 12px;
+      }
     }
 
     span {
@@ -273,6 +284,9 @@ export default {
         outline: none;
         box-shadow: 0 1px 0 0 #303030;
       }
+      @media (max-width: 610px) {
+        margin-bottom: 10px;
+      }
     }
 
     .upload-file {
@@ -281,6 +295,9 @@ export default {
       position: relative;
       display: flex;
 
+      @media (max-width: 610px) {
+        margin-left: 0 !important;
+      }
       input {
         display: none;
       }
@@ -295,6 +312,10 @@ export default {
         margin-left: 16px;
         align-self: center;
       }
+    }
+
+    @media (max-width: 610px) {
+      flex-direction: column;
     }
   }
 
@@ -323,15 +344,30 @@ export default {
   }
 
   .note-actions {
-    margin-top: 32px;
+    /* margin-top: 32px; */
 
     button {
       margin-right: 16px;
       color: #f7faa5;
+      @media (max-width: 360px) {
+        width: 100%;
+        text-align: center;
+        margin-right: 0 !important;
+      }
     }
 
     .router-button {
-        color: #f7faa5;
+      color: #f7faa5;
+      @media (max-width: 360px) {
+        margin-top: 10px;
+        width: 100%;
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 360px) {
+      display: flex;
+      flex-direction: column;
     }
   }
 }

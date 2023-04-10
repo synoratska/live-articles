@@ -76,6 +76,11 @@ footer {
   margin-top: auto;
   padding: 50px 25px;
   background-color: #020202;
+
+  @media (max-width: 800px) {
+    padding-top: 40px;
+    padding-bottom: 20px;
+  }
   .container {
     display: flex;
     flex-direction: column;
@@ -179,9 +184,10 @@ footer {
         align-items: flex-end;
         gap: 0;
       }
-    }
-    p {
-      margin-top: auto;
+      p {
+        margin-top: auto;
+        font-size: 12px;
+      }
     }
   }
 
