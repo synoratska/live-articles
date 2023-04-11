@@ -1,14 +1,6 @@
 <template>
   <div class="gallery">
-    <div class="icons">
-      <div class="icon edit">
-        <Edit class="edit" />
-      </div>
 
-      <div class="icon delete">
-        <!-- <Delete class="delete" /> -->
-      </div>
-    </div>
     <div class="gallery-wrap">
       <img :src="require('@/assets/blogCards/002.jpg')" />
       <img :src="require('@/assets/blogCards/004.jpg')" />
@@ -19,11 +11,11 @@
 </template>
 
 <script>
-import Edit from '@/assets/Icons/edit-regular.svg'
+
 export default {
   name: 'PhotoGallery',
   components: {
-    Edit,
+
   },
   props: ['post'],
 }

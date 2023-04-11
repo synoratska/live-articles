@@ -3,7 +3,7 @@
     <nav class="container">
       <div class="branding">
         <router-link class="header" :to="{ name: 'Home' }"
-          >Ukrainian<span>Portal</span>
+          >Ukrainian<span> Portal</span>
         </router-link>
       </div>
       <div class="nav-links">
@@ -109,6 +109,7 @@ export default {
 
   methods: {
     toggleMobileNav() {
+   
       this.mobileNav = !this.mobileNav
     },
     toggleMobileMenu(e) {

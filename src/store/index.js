@@ -27,10 +27,10 @@ export default new Vuex.Store({
   },
   getters: {
     notePostsFeed(state) {
-      return state.notePosts.slice(1, 3)
+      return state.notePosts.slice(0, 2)
     },
     notePostsCards(state) {
-      return state.notePosts.slice(2, 6)
+      return state.notePosts.slice(3, 7)
     },
   },
   mutations: {
@@ -135,6 +135,7 @@ export default new Vuex.Store({
       })
       state.noteLoaded = true
     },
+
     async updateNote({ commit, dispatch }, payload) {
       commit('filterNotePost', payload)
       await dispatch('getNote')
