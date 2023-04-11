@@ -33,8 +33,10 @@ export default {
   justify-content: center;
  
   img {
-    max-width: 50%;
+    max-width: 100%;
     max-height: 400px;
+
+    
   }
 }
 
