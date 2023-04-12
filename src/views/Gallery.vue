@@ -1,6 +1,5 @@
 <template>
   <div class="gallery">
-
     <div class="gallery-wrap">
       <img :src="require('@/assets/blogCards/002.jpg')" />
       <img :src="require('@/assets/blogCards/004.jpg')" />
@@ -11,12 +10,9 @@
 </template>
 
 <script>
-
 export default {
   name: 'PhotoGallery',
-  components: {
-
-  },
+  components: {},
   props: ['post'],
 }
 </script>
@@ -31,22 +27,20 @@ export default {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
- 
+
   img {
     max-width: 100%;
     max-height: 400px;
-
-    
   }
 }
 
-  .gallery-wrap>img:nth-child(odd) {
-   margin: 20px;
- }
+.gallery-wrap > img:nth-child(odd) {
+  margin: 20px;
+}
 
-   .gallery-wrap>img:nth-child(even) {
-   margin: 20px;
- }
+.gallery-wrap > img:nth-child(even) {
+  margin: 20px;
+}
 .edit,
 .delete {
   pointer-events: none;

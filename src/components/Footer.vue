@@ -6,20 +6,6 @@
           <router-link class="header" :to="{ name: 'Home' }"
             >Ukrainian <span>Portal</span></router-link
           >
-          <ul>
-            <li>
-              <a href="#"><youTube class="svg-icon" /></a>
-            </li>
-            <li>
-              <a href="#"><twitter class="svg-icon" /></a>
-            </li>
-            <li>
-              <a href="#"><instagram class="svg-icon" /></a>
-            </li>
-            <li>
-              <a href="#"><linkedIn class="svg-icon" /></a>
-            </li>
-          </ul>
         </div>
         <div class="col-2">
           <ul>
@@ -40,6 +26,20 @@
         </div>
       </div>
       <div class="right">
+        <ul>
+          <li>
+            <a href="#"><youTube class="svg-icon" /></a>
+          </li>
+          <li>
+            <a href="#"><twitter class="svg-icon" /></a>
+          </li>
+          <li>
+            <a href="#"><instagram class="svg-icon" /></a>
+          </li>
+          <li>
+            <a href="#"><linkedIn class="svg-icon" /></a>
+          </li>
+        </ul>
         <p>Copyright 2023 All Rights Reserved</p>
       </div>
     </div>
@@ -74,7 +74,7 @@ export default {
 <style lang="scss" scoped>
 footer {
   margin-top: auto;
-  padding: 50px 25px;
+  padding: 50px 25px 30px;
   background-color: #020202;
 
   @media (max-width: 800px) {
@@ -141,18 +141,6 @@ footer {
             text-align: initial;
           }
         }
-        ul {
-          margin-top: auto;
-          li {
-            display: flex;
-            align-items: center;
-            .svg-icon {
-              width: 24px;
-              height: auto;
-              color: #fff;
-            }
-          }
-        }
       }
 
       .col-2 {
@@ -180,6 +168,7 @@ footer {
       color: #fff;
       align-items: center;
       flex-direction: column;
+    
       @media (min-width: 800px) {
         align-items: flex-end;
         gap: 0;
@@ -187,6 +176,24 @@ footer {
       p {
         margin-top: auto;
         font-size: 12px;
+      }
+      ul {
+       /* margin-bottom: 30px; */
+         display: flex;
+        li {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          margin: 5px;
+          .svg-icon {
+            width: 24px;
+            height: auto;
+            color: #fff;
+          }
+          @media (max-width: 800px) {
+            display: flex;
+          }
+        }
       }
     }
   }
